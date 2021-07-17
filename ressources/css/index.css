@@ -1,0 +1,13 @@
+#container{
+    
+    width: 100%;
+    text-align: center;
+    margin: auto;
+
+}
+
+#container div{
+
+    margin-top:200px;
+
+}

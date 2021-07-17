@@ -1,19 +1,22 @@
 <?php
+/*
+echo "<pre>";
+var_dump($this->getDataForm());
+echo "</pre>";
+*/
 
-Require(__DIR__."\autoloads\Autoload.php");
+Require(__DIR__."\Autoloads\Autoload.php");
 
-Autoload::addRequireFilesInProject();
+$autoload = new Autoload();
 
-$bd = new DatabaseConnexion();
+//$connexion = new DatabaseConnexion();
 
-if($bd->getIsConnect() == false){
-
-    echo Errors::view();
-    
-} else {
+if(Autoload::$App["Database"]->getIsConnect() == true){
 
     $route = new Route();
-    $route->launch();
-    
+    require (dirname(__DIR__)."\\routes\Web.php");
+    $route->agent();
+
 }
+    
 

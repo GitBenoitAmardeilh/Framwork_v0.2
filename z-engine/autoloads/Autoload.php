@@ -2,11 +2,25 @@
 
 class Autoload{
 
-    //public static $_load = [];
+    /**
+     * @var array
+     * Contient les objets $App[ "Errors" , "Database" ]
+     */
+    public static $App = [];
 
-    public static $_app = [];
+    public $_isLoad = false;
 
-    public static function addRequireFilesInProject(){
+    public function __CONSTRUCT(){
+
+            $this->addRequireFilesInProject();
+
+    }
+
+    /**
+     * Add all requires in project
+     * @return void 
+     */
+    public function addRequireFilesInProject(){
 
         $_autoload_file  = Require("z-engine\autoloads\Autoload_Class.php");
 
@@ -15,8 +29,6 @@ class Autoload{
             $_arrLink = explode("\\",$value);
             $_file = substr($_arrLink[sizeOf($_arrLink)- 1], 0 ,-4);
 
-            //self::$_load[$_file] = $value;
-
             Require($value);
 
             if($_file == "Controller"){
@@ -24,7 +36,6 @@ class Autoload{
                 /**
                  * Charge tous les Controleurs du dossier "app\http\controllers" 
                  */
-                
                 $_httpControllersList = scandir(dirname(dirname(__DIR__))."\\app\http\controllers");
         
                 foreach($_httpControllersList as $key => $value){
@@ -35,9 +46,13 @@ class Autoload{
                 }
             }
 
-            if($_file == "Errors"){
+            if($_file == "Models"){
 
-                self::$_app[$_file] = new $_file();
+                self::$App[$_file] = new $_file(self::$App["Database"]->getBDD());
+
+            } else {
+
+                self::$App[$_file] = new $_file();
 
             }
 

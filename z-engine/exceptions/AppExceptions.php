@@ -1,6 +1,6 @@
 <?php
 
-class AppExceptions{
+Abstract class AppExceptions{
 
     private $_inError = false;
 
@@ -23,9 +23,15 @@ class AppExceptions{
 
     }
 
-    public static function view(){
+    public function view($e){
 
-        return self::class;
+        echo "<pre>";
+        var_dump($e->getMessage());
+        echo "</pre>";
+
+        //get_class($this) == "Errors"
+        
+        exit;
 
     }
 

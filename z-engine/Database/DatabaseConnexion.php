@@ -7,12 +7,12 @@ class DatabaseConnexion{
     private $_isConnect = false;
 
 	public function __CONSTRUCT(){
-        
-		$this->connexion();
+
+		$this->getConnexionDB();
 
 	}
 
-	public function connexion(){
+	public function getConnexionDB(){
 
         $_db_infos = require(dirname(dirname(__DIR__))."\config\Database_Config.php");
 
@@ -25,7 +25,7 @@ class DatabaseConnexion{
 
 		} catch (PDOException $e) {
 
-			echo "Errur PDO ! </br>";
+			echo Autoload::$App["Warning"]->view($e);
 
 		}
         

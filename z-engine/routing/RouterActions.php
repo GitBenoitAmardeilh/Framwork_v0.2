@@ -2,20 +2,75 @@
 
 Abstract class RouterActions{
 
-    public static $_RContainer = [];
+    private $_RContainer = [];
+
+    private $_PContainer = [];
 
     /**
-     * Add all routes (Check Web.php) in the array self::$getList
-     * 
      * @param string $routeName
      * @param array $data
      * @return void
+     * 
+     * $data => [$controller,$method()]
      */
-    public static function get($route,$data){
+    public function get( $route , $data ){
 
-        self::$_RContainer[$route] = $data;
+        $this->setRContainer( $route , $data );
 
     }
 
+    /**
+     * @param string $routeName
+     * @param array $data
+     * @return void
+     * 
+     * $data => [$controller,$method()]
+     */
+    public function post( $route , $data ){
+
+        $this->setRContainer( $route , $data );
+        $this->explodeArray($_POST);
+
+    }
+
+    /**
+     * @param array $data
+     * @return void
+     */
+    public function explodeArray( $array ){
+
+        foreach( $array as $key => $value ){
+
+            if(gettype($array[$key]) == "array"){
+
+                $this->explodeArray($array[$key]);
+
+            } else {
+
+                $this->_PContainer[$key] = $value;
+
+            }
+
+        }
+        
+    }
+
+    public function getRContainer(){
+
+        return  $this->_RContainer;
+
+    }
+
+    public function setRContainer( $route , $data ){
+
+        $this->_RContainer[$route] = $data;
+
+    }
+
+    public function getPContainer(){
+
+        return  $this->_PContainer;
+
+    }
     
 }
