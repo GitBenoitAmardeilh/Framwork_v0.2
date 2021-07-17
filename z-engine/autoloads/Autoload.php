@@ -2,7 +2,7 @@
 
 class Autoload{
 
-    public static $_load = [];
+    //public static $_load = [];
 
     public static $_app = [];
 
@@ -15,15 +15,19 @@ class Autoload{
             $_arrLink = explode("\\",$value);
             $_file = substr($_arrLink[sizeOf($_arrLink)- 1], 0 ,-4);
 
-            self::$_load[$_file] = $value;
+            //self::$_load[$_file] = $value;
 
             Require($value);
 
             if($_file == "Controller"){
 
-                $_controllers = scandir(dirname(dirname(__DIR__))."\\app\http\controllers");
+                /**
+                 * Charge tous les Controleurs du dossier "app\http\controllers" 
+                 */
+                
+                $_httpControllersList = scandir(dirname(dirname(__DIR__))."\\app\http\controllers");
         
-                foreach($_controllers as $key => $value){
+                foreach($_httpControllersList as $key => $value){
 
                     if($value != "." && $value != "..")
                         require(dirname(dirname(__DIR__))."\\app\http\controllers\\".$value);
@@ -36,6 +40,8 @@ class Autoload{
                 self::$_app[$_file] = new $_file();
 
             }
+
+            
 
         }
 

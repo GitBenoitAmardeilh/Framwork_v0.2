@@ -1,6 +1,6 @@
 <?php
 
-require(__DIR__.'\Core.php');
+require(dirname(__DIR__).'\Core.php');
 
 use app\http\Core\Core;
 

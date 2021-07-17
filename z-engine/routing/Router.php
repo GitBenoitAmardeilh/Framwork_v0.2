@@ -35,6 +35,7 @@ class Router extends RouterActions{
 
         $controller = $this->controller;
         $controller = new $controller();
+        
         $actions = $this->action;
 
         $controller->$actions();

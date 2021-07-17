@@ -23,4 +23,10 @@ class AppExceptions{
 
     }
 
+    public static function view(){
+
+        return self::class;
+
+    }
+
 }

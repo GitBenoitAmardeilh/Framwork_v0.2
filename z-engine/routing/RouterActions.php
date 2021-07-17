@@ -1,6 +1,6 @@
 <?php
 
-class RouterActions{
+Abstract class RouterActions{
 
     public static $_RContainer = [];
 
@@ -17,4 +17,5 @@ class RouterActions{
 
     }
 
+    
 }

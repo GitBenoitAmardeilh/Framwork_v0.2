@@ -6,9 +6,7 @@ class Core{
 
     public function __CONSTRUCT(){
 
-        /**
-         * Constructor Core()
-         */
+
 
     }
 

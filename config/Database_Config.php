@@ -22,7 +22,7 @@ return [
 
     'HOST'          => "localhost",
 
-    'DATABASE'      => "mysql",
+    'DATABASE'      => "projet",
 
     'USER_NAME'     => "root",
 
