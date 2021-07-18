@@ -31,32 +31,39 @@ class Autoload{
 
             Require($value);
 
-            if($_file == "Controller"){
+            switch( $_file ){
 
-                /**
-                 * Charge tous les Controleurs du dossier "app\http\controllers" 
-                 */
-                $_httpControllersList = scandir(dirname(dirname(__DIR__))."\\app\http\controllers");
-        
-                foreach($_httpControllersList as $key => $value){
+                case "Controller":
 
-                    if($value != "." && $value != "..")
-                        require(dirname(dirname(__DIR__))."\\app\http\controllers\\".$value);
-        
-                }
-            }
-
-            if($_file == "Models"){
-
-                self::$App[$_file] = new $_file(self::$App["Database"]->getBDD());
-
-            } else {
-
-                self::$App[$_file] = new $_file();
-
-            }
-
+                    $_httpControllersList = scandir(dirname(dirname(__DIR__))."\\app\http\controllers");
             
+                    foreach($_httpControllersList as $key => $value){
+
+                        if($value != "." && $value != "..")
+                            require(dirname(dirname(__DIR__))."\\app\http\controllers\\".$value);
+            
+                    }
+
+                    self::$App[$_file] = new $_file();
+                    break;
+
+                case "Models":
+                    self::$App[$_file] = new $_file(self::$App["Database"]->getBDD());
+                    break;
+
+                case "Route":
+                    if(self::$App[$_file] = new $_file()){
+                        require (dirname(dirname(__DIR__))."\\routes\Web.php");
+                    } else {
+                        self::$App[$_file] = new $_file();
+                    }
+                    break;
+
+                default:
+                    self::$App[$_file] = new $_file();
+                    break;
+
+            }
 
         }
 

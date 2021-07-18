@@ -8,14 +8,15 @@ echo "</pre>";
 Require(__DIR__."\Autoloads\Autoload.php");
 
 $autoload = new Autoload();
+Autoload::$App["Route"]->checkControllerAndAction();
 
-//$connexion = new DatabaseConnexion();
+if(sizeOf(Autoload::$App["Err"]->getErrorInfos()) <> 0){
 
-if(Autoload::$App["Database"]->getIsConnect() == true){
+    Autoload::$App["Err"]->view();
 
-    //$route = new Route();
-    require (dirname(__DIR__)."\\routes\Web.php");
-    Autoload::$App["Route"]->agent();
+} else {
+
+    Autoload::$App["Route"]->redirectToController();
 
 }
     

@@ -15,7 +15,7 @@ Abstract class RouterActions{
      */
     public function get( $route , $data ){
 
-        $this->setRContainer( $route , $data );
+        $this->testRArray( $route , $data,"GET");
 
     }
 
@@ -28,8 +28,8 @@ Abstract class RouterActions{
      */
     public function post( $route , $data ){
 
-        $this->setRContainer( $route , $data );
-        $this->explodeArray($_POST);
+        $this->testRArray( $route , $data , "POST" );
+        $this->explodePOSTArray($_POST);
 
     }
 
@@ -37,13 +37,13 @@ Abstract class RouterActions{
      * @param array $data
      * @return void
      */
-    public function explodeArray( $array ){
+    public function explodePOSTArray( $array ){
 
         foreach( $array as $key => $value ){
 
             if(gettype($array[$key]) == "array"){
 
-                $this->explodeArray($array[$key]);
+                $this->explodePOSTArray($array[$key]);
 
             } else {
 
@@ -53,6 +53,17 @@ Abstract class RouterActions{
 
         }
         
+    }
+
+    public function testRArray( $route , $data , $type){
+
+        $this->_RContainer[] = [
+                "Type" => $type,
+                "Route" => $route,
+                "Controller" => $data[0],
+                "Method" => $data[1],
+        ];   
+
     }
 
     public function getRContainer(){

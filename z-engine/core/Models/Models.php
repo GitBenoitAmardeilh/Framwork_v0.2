@@ -5,9 +5,9 @@ class Models{
 	private $_bdd;
 
 
-	public function __CONSTRUCT( $test ){
+	public function __CONSTRUCT( ){
 
-		$this->setBDD( $test );
+		//$this->setBDD( );
 
 	}
 

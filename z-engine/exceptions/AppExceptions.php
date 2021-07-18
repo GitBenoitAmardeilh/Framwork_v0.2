@@ -4,11 +4,12 @@ Abstract class AppExceptions{
 
     private $_inError = false;
 
+    private $_errorInfos = array();
+
     public function getMessage(){
 
-        //echo "ok";
         $this->setInError(true);
-        //echo $this->getInError();
+
     }
 
     public function setInError( $bool ) { 
@@ -23,15 +24,21 @@ Abstract class AppExceptions{
 
     }
 
-    public function view($e){
+    public function view(){
 
-        echo "<pre>";
-        var_dump($e->getMessage());
-        echo "</pre>";
+        Autoload::$App["Controller"]->errorRender("errors");
 
-        //get_class($this) == "Errors"
-        
-        exit;
+    }
+
+    public function save($e){
+
+        $this->_errorInfos[sizeOf($this->_errorInfos)] = "bonj";
+
+    }
+
+    public function getErrorInfos(){
+
+        return $this->_errorInfos;
 
     }
 

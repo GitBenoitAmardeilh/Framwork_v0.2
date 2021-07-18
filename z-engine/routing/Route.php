@@ -15,7 +15,7 @@ class Route extends RouterActions{
      * @var string
      * the name of called controller
      */
-    private $controller;
+    private $_controller;
 
 
     /**
@@ -23,7 +23,7 @@ class Route extends RouterActions{
      * the name of called action
      * 
      */
-    private $action;
+    private $_action;
 
 
     /**
@@ -31,16 +31,17 @@ class Route extends RouterActions{
      * 
      * @return void
      */
-    /*
-    public function launch(){
+    
+    public function redirectToController(){
 
-        $controller = $this->controller;
+        $controller = $this->_controller;
         $controller = new $controller();
+        $controller->setDataForm($this->getPContainer());
         
-        $actions = $this->action;
+        $actions = $this->_action;
 
         $controller->$actions();
-    }*/
+    }
 
 
     /**
@@ -48,7 +49,7 @@ class Route extends RouterActions{
      * 
      * @return void
      */
-    public function agent(){
+    public function checkControllerAndAction(){
         
         // Save URL in $getList array()
         $this->url = $_GET['p'];
@@ -59,14 +60,10 @@ class Route extends RouterActions{
             
             foreach($this->getRContainer() as $key => $value){
 
-                if( $this->url == str_replace("/","",$key)){
-                    
-                    $controller = $value[0];
-                    $controller = new $controller();
-                    $action = $value[1];
+                if( $this->url == substr($value['Route'],1,strlen($value['Route']))){
 
-                    $controller->setDataForm($this->getPContainer());
-                    $controller->$action();
+                    $this->_controller = $value["Controller"];
+                    $this->_action = $value["Method"];
 
                     $exist = true;
 
@@ -81,7 +78,8 @@ class Route extends RouterActions{
 
         } catch (Exception $e) {
 
-            Autoload::$App["Errors"]->view($e);
+            Autoload::$App["Err"]->save($e);
+
 
         }
 

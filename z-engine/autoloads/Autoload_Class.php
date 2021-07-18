@@ -9,11 +9,8 @@ $_shop_dir = dirname(__DIR__);
 return [
 
     $_shop_dir.'\Core\Controllers\Controller.php',
-    $_shop_dir.'\Database\Database.php',
-    $_shop_dir.'\Core\Models\Models.php',
-    $_shop_dir.'\Exceptions\Errors.php',
-    $_shop_dir.'\Exceptions\Warning.php',
+    $_shop_dir.'\Exceptions\Err.php',
     $_shop_dir.'\Routing\Route.php',
-    $_shop_dir.'\Log\Logger.php',
+    $_shop_dir.'\Database\Database.php',
 
 ];

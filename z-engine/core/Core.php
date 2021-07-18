@@ -59,16 +59,23 @@ class Core{
 
 	}
 
-	/**
-     * Cette fonction vas permettre de charger un modele dans le controlleur 
-     * correspondant.
-     */
+	/*inclu le fichier demandé*/
+	public function errorRender($filename){
 
-	public function loadModel($nameModel){
+		extract($this->vars);
 
-		require_once('Models/'.lcfirst($nameModel).'.php');
-		$this->$nameModel = new $nameModel();
+		ob_start();
+		require(dirname(__DIR__).'\Exceptions\Views\\'.$filename.'.php');
+		$content_for_layout = ob_get_clean();
+		
+		if($this->layout == false){
+			echo $content_for_layout;
+		}
+		else{
+			require(dirname(__DIR__).'\Config\View\ConfigDashboard.php');
+		}
 
 	}
+
 
 }

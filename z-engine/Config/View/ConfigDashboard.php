@@ -1,48 +1,98 @@
 <!DOCTYPE html>
+<?php
+
+function getKeys( $array ){
+
+    $tab = array();
+    $i = 0;
+
+    foreach($array as $key => $value){
+
+        $tab[$i] = $key;
+        $i++;
+
+    }
+
+    return $tab;
+
+}
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Développeur</title>
 </head>
 <body>
 
     <style>
         body{ margin: 0px; }
-        .background { background-color: rgb(5,5,20); }
-        footer{ position: fixed; bottom: 0; width: 100%;}
-        ul{  margin:0; padding:0;}
+        .bdMain{ background-color: rgb(7,150,89); }
+        .font-size{ font-size: 13px; }
+        footer{ position: fixed; bottom: 0; width: 100%; }
+        .communParam{  letter-spacing: 1px; }
+        .dashNameRow { color:white; }
+        .dashCommun { background-color: rgb(190,190,190);  }
+        .bcRed{ background-color:rgb(243,35,35); }
+        .green{ color:green; }
+        .red{ color:rgb(200,11,11); }
+        nav ul{  margin:0; padding:0;}
         li{ display:inline-block; list-style-type:none; }
-        a{ display: block; color: white; text-decoration: none; padding: 10px 20px 10px 20px; margin: 0 -3px 0 0; letter-spacing: 1px; font-size: 13px;}
+        nav li > a{ display: block; color: white; text-decoration: none; padding: 10px 20px 10px 20px; margin: 0 -3px 0 0; letter-spacing: 1px;}
         li:hover > .ulSubMenu{ display: block; }
-        .ulSubMenu{ position: absolute; display: none; bottom: 39px; }
-        .ulSubMenu li{ display:inline; }
-        .ulSubMenu a{ color: white; padding: 10px; }
+        .ulSubMenu{ position: absolute; display: none; bottom: 35px; padding-bottom:10px;}
+        /*.ulSubMenu .container{ display:flex; flex-direction: row; padding-bottom:10px;}*/
+        .dicContainer{  }
+        table{ border-collapse: collapse; }
+        table tr th, table tr td{ padding:7px; }
+        table tr td{ background-color:rgb(230,230,230); }
+        .GET{ color:blue; }
+        .POST{ color:green; }
+
+
 
     </style>
 
     <?php echo $content_for_layout; ?>
 
-    <footer class="background">
+    <footer class="background bdMain font-size">
         <nav>
             <ul>
-                <li><a href="#">Routes</a><ul class="ulSubMenu background">
-                        <?php
-                        $i = 0;
-                        foreach(Autoload::$App["Route"]->getRContainer() as $key => $value){
-                            ?> <li><a href="#"><?php echo $key; ?> | <?php 
-                            foreach($value as $key => $val){
-                                echo $val." - "; 
-                            }
-                            ?></a> <?php
-                            $i++;
-                        }
+                <li><a href="#" class="communParam">R (<?php echo sizeOf(Autoload::$App["Route"]->getRContainer()); ?>)</a><ul class="ulSubMenu">
 
-                        ?>
+                    <div class="dicContainer"><div><table class="communParam font-size"><?php
+
+                        ?> <thead class="bdMain"><tr><?php
+                        foreach(Autoload::$App["Route"]->getRContainer() as $key => $value){ 
+  
+                            ?> <th class="<?php echo getKeys($value)[$key]; ?>"> <?php echo getKeys($value)[$key]; ?> </th> <?php
+   
+                        }
+                        ?></tr></thead> <?php
+
+                        ?> <tbody><?php
+
+                        foreach(Autoload::$App["Route"]->getRContainer() as $key => $value){ 
+
+                            ?> <tr> <?php
+
+                            foreach($value as $k => $v){
+
+                                ?> <td class="<?php if($v == "GET" || $v == "POST"){ echo $v; } ?>"> <?php echo $v; ?>  </td> <?php
+
+                            }
+
+                            ?>  </tr><?php
+   
+                        }
+                        ?></tbody> <?php
+
+                    ?></table></div></div>
+
                 </ul></li>
-                <li><a href="#">Configurations</a></li>
-                <li><a href="#">aeae</a></li>
+                <li><a href="#"><?php echo "E (".sizeOf(Autoload::$App["Err"]->getErrorInfos()).")";?></a></li>
+                <li><a href="#">Logs</a></li>
             </ul>
         </nav>
     </footer>
