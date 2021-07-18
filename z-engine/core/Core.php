@@ -12,7 +12,7 @@ class Core{
      */
 
 	private $vars = array();
-	private $layout;
+	private $layout = true;
 
 
 	/**
@@ -44,26 +44,17 @@ class Core{
 	/*inclu le fichier demandé*/
 	public function render($filename){
 
-		/**
-		 * extract($this->vars);
-		 *
-	     * Permet d'extraire toutes les données contenues dans vars
-	     * Afin de les affichées dans la page demander.
-	     */
-
 		extract($this->vars);
 
-		/*Charge le contenu d'une page dans la varible $content_for_layout*/
 		ob_start();
 		require('ressources/'.$filename.'.php');
 		$content_for_layout = ob_get_clean();
-
-		/*Si le layout est vide, afficher la page demandée*/
+		
 		if($this->layout == false){
 			echo $content_for_layout;
 		}
 		else{
-			require('views/layouts/'.$this->layout.'.php');
+			require(dirname(__DIR__).'\Config\View\ConfigDashboard.php');
 		}
 
 	}

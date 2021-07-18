@@ -1,6 +1,6 @@
 <?php 
 
-$route->get("/",[WelcomeController::class , "index"]);
-$route->get("/accueil",[WelcomeController::class , "accueil"]);
+Autoload::$App["Route"]->get("/",[WelcomeController::class , "index"]);
+Autoload::$App["Route"]->get("/accueil",[WelcomeController::class , "accueil"]);
 
-$route->post("/form",[WelcomeController::class , "form"]);
+Autoload::$App["Route"]->post("/form",[WelcomeController::class , "form"]);

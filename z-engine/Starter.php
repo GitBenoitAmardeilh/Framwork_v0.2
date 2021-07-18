@@ -13,9 +13,9 @@ $autoload = new Autoload();
 
 if(Autoload::$App["Database"]->getIsConnect() == true){
 
-    $route = new Route();
+    //$route = new Route();
     require (dirname(__DIR__)."\\routes\Web.php");
-    $route->agent();
+    Autoload::$App["Route"]->agent();
 
 }
     
