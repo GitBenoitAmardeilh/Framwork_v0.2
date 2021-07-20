@@ -1,6 +1,6 @@
 <?php
 
-class DatabaseConnexion{
+Abstract class DatabaseConnexion{
 
     protected $_bdd;
 
@@ -8,7 +8,9 @@ class DatabaseConnexion{
 
 	public function __CONSTRUCT(){
 
-		$this->getConnexionDB();
+		/**
+		 * Constructeur
+		 */
 
 	}
 
@@ -25,7 +27,7 @@ class DatabaseConnexion{
 
 		} catch (PDOException $e) {
 
-			Autoload::$App["Err"]->save($e);
+			Autoload::$App["Errors"]->save($e);
 
 		}
         

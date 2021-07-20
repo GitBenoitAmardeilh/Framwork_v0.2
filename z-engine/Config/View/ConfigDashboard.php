@@ -1,29 +1,6 @@
 <!DOCTYPE html>
-<?php
-
-function getKeys( $array ){
-
-    $tab = array();
-    $i = 0;
-
-    foreach($array as $key => $value){
-
-        $tab[$i] = $key;
-        $i++;
-
-    }
-
-    return $tab;
-
-}
-
-?>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+
 <body>
 
     <style>
@@ -64,9 +41,11 @@ function getKeys( $array ){
                     <div class="dicContainer"><div><table class="communParam font-size"><?php
 
                         ?> <thead class="bdMain"><tr><?php
-                        foreach(Autoload::$App["Route"]->getRContainer() as $key => $value){ 
-  
-                            ?> <th class="<?php echo getKeys($value)[$key]; ?>"> <?php echo getKeys($value)[$key]; ?> </th> <?php
+                        $tab = Autoload::$App["Route"]->getRContainer()[0];
+        
+                        foreach($tab as $key => $value){ 
+                            
+                            ?> <th class="<?php echo $key; ?>"> <?php echo $key; ?> </th> <?php
    
                         }
                         ?></tr></thead> <?php
@@ -91,7 +70,7 @@ function getKeys( $array ){
                     ?></table></div></div>
 
                 </ul></li>
-                <li><a href="#"><?php echo "E (".sizeOf(Autoload::$App["Err"]->getErrorInfos()).")";?></a></li>
+                <li><a href="#"><?php echo "E (".sizeOf(Autoload::$App["Errors"]->getErrorInfos()).")";?></a></li>
                 <li><a href="#">Logs</a></li>
             </ul>
         </nav>

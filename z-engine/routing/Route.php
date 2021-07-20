@@ -49,8 +49,8 @@ class Route extends RouterActions{
      * 
      * @return void
      */
-    public function checkControllerAndAction(){
-        
+    public function assignControllerAndAction(){
+
         // Save URL in $getList array()
         $this->url = $_GET['p'];
 
@@ -66,7 +66,6 @@ class Route extends RouterActions{
                     $this->_action = $value["Method"];
 
                     $exist = true;
-
                     break;
     
                 }
@@ -78,8 +77,7 @@ class Route extends RouterActions{
 
         } catch (Exception $e) {
 
-            Autoload::$App["Err"]->save($e);
-
+            Autoload::$App["Errors"]->save($e,$this);
 
         }
 

@@ -20,8 +20,7 @@ class Core{
      * qui ont étaient insérées dans $tab, et les retournées à la vue.
      */
 
-	public function setDonnees($tab){
-
+	public function setData($array){
 
 		/**
 		* array_merge()
@@ -31,13 +30,13 @@ class Core{
 		* tableau.
 		**/
 
-		$this->vars = array_merge($this->vars, $tab);
+		$this->vars = array_merge($this->vars, $array);
 
 	}
 
-	public function setLayout($lyt){
+	public function setLayout($filename){
 
-		$this->layout = $lyt;
+		$this->layout = $filename;
 
 	}
 
@@ -62,13 +61,18 @@ class Core{
 	/*inclu le fichier demandé*/
 	public function errorRender($filename){
 
-		extract($this->vars);
+		if(file_exists(dirname(__DIR__).'\\Exceptions\\Xml\\Exception.xml')){
+			$xml = simplexml_load_file(dirname(__DIR__).'\\Exceptions\\Xml\\Exception.xml');
+		} else {
+			$xml = simplexml_load_file(dirname(__DIR__).'\\Exceptions\\Xml\\PDOException.xml');
+		}
 
 		ob_start();
 		require(dirname(__DIR__).'\Exceptions\Views\\'.$filename.'.php');
 		$content_for_layout = ob_get_clean();
 		
 		if($this->layout == false){
+
 			echo $content_for_layout;
 		}
 		else{

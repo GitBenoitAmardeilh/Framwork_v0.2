@@ -8,14 +8,15 @@ echo "</pre>";
 Require(__DIR__."\Autoloads\Autoload.php");
 
 $autoload = new Autoload();
-Autoload::$App["Route"]->checkControllerAndAction();
+Autoload::$App["Route"]->assignControllerAndAction();
 
-if(sizeOf(Autoload::$App["Err"]->getErrorInfos()) <> 0){
+if(sizeOf(Autoload::$App["Errors"]->getErrorInfos()) <> 0){
 
-    Autoload::$App["Err"]->view();
+    Autoload::$App["Errors"]->view();
 
 } else {
 
+    Autoload::$App["Errors"]->deleteXmlFile();
     Autoload::$App["Route"]->redirectToController();
 
 }

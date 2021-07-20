@@ -1,0 +1,73 @@
+body{
+
+    background-color: rgb(240,240,240);
+    
+}
+
+.error{ background: rgb(251,224,142); }
+
+.div_main_container{
+
+    margin-bottom: 100px;
+
+}
+
+.div_title_error{
+    width: 100%;
+    margin: auto;
+    padding-top: 150px;
+    text-align: center;
+}
+
+.div_red_message{
+    background-color: red;
+    color:white;
+    padding:5px;
+}
+
+.div_MainMessage_error{
+
+    margin: auto;
+    width:1280px;
+
+}
+
+.div_MainMessage_error .div_title{
+
+    background-color: rgb(150,150,150);
+
+}
+
+.div_MainMessage_error p{
+
+    display: block;
+    margin: 0;
+    padding: 10px;
+
+}
+
+.div_MainMessage_error span{
+
+    font-style: italic;
+
+}
+
+.div_MainMessage_error .div_container{
+
+    background-color: white;
+
+}
+
+.div_MainMessage_error .div_container .div_codeLine{
+
+    padding:20px;
+    border-top:1px solid rgb(150,150,150);
+
+}
+
+.div_MainMessage_error .div_container .div_codeLine p{
+
+    margin: 0;
+    padding: 5px;
+
+}

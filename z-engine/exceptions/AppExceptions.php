@@ -1,28 +1,10 @@
 <?php
 
-Abstract class AppExceptions{
+Require(__DIR__."\ExceptionManager.php");
 
-    private $_inError = false;
+Abstract class AppExceptions extends ExceptionManager{
 
     private $_errorInfos = array();
-
-    public function getMessage(){
-
-        $this->setInError(true);
-
-    }
-
-    public function setInError( $bool ) { 
-
-        $this->_inError = $bool;
-
-    }
-
-    public function getInError(){
-
-        return $this->_inError;
-
-    }
 
     public function view(){
 
@@ -30,9 +12,9 @@ Abstract class AppExceptions{
 
     }
 
-    public function save($e){
+    public function save( $e ){
 
-        $this->_errorInfos[sizeOf($this->_errorInfos)] = "bonj";
+        $this->_errorInfos[sizeOf($this->_errorInfos)] = $this->explodeException( $e );
 
     }
 
@@ -41,5 +23,4 @@ Abstract class AppExceptions{
         return $this->_errorInfos;
 
     }
-
 }

@@ -14,10 +14,4 @@ class WelcomeController extends Controller{
 
     }
 
-    public function accueil(){
-
-        $this->render("Accueil");
-
-    }
-
 }
