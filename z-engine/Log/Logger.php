@@ -1,7 +1,14 @@
 <?php
 class Logger{
 
+    /**
+     * @var string
+     */
     private static $_path = __DIR__.'\\log.txt';
+
+    /**
+     * @var
+     */
     private static $_file;
 
     /**
