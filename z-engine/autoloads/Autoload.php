@@ -54,6 +54,7 @@ class Autoload{
                     break;
 
                 case "Route":
+                    Require(dirname(__DIR__)."\Routing\RouterActions.php");
                     Require($path);
                     self::$App[$_file] = new $_file();
                     Autoload::$App["Log"]->write("Loading Object ".$_file."() -- ", $path);
@@ -78,6 +79,12 @@ class Autoload{
 
                 case "Log":
                     Require(dirname(__DIR__) . "\Log\Logger.php");
+                    Require($path);
+                    self::$App[$_file] = new $_file();
+                    self::$App["Log"]->write("Loading Object ".$_file."() -- ", $path);
+                    break;
+
+                case "Models":
                     Require($path);
                     self::$App[$_file] = new $_file();
                     self::$App["Log"]->write("Loading Object ".$_file."() -- ", $path);
