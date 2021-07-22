@@ -9,9 +9,6 @@ class Database extends DatabaseConnexion{
      */
 	public function __CONSTRUCT()
     {
-        /**
-         * Un commentaire à supprimer
-         */
 		$this->getConnexionDB();
 	}
 

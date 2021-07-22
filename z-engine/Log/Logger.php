@@ -4,12 +4,12 @@ class Logger{
     /**
      * @var string
      */
-    private static $_path = __DIR__.'\\log.txt';
+    protected $_path = __DIR__.'\\log.txt';
 
     /**
      * @var
      */
-    private static $_file;
+    protected $_file;
 
     /**
      * @param $content
@@ -17,7 +17,7 @@ class Logger{
      * @param false $isError
      * Write in XML File
      */
-    public static function write( $content, $path = false, $isError = false )
+    public function write( $content, $path = false, $isError = false )
     {
         $message = $content;
 
@@ -26,9 +26,9 @@ class Logger{
         }
 
         if($isError == true) {
-            file_put_contents(self::$_path,"[ERROR] - [".Date("H:m:s")."] : ".$message."\n", FILE_APPEND);
+            file_put_contents($this->_path,"[ERROR] - [".Date("H:m:s")."] : ".$message."\n", FILE_APPEND);
         } else {
-            file_put_contents(self::$_path, "[OK] - [" . Date("H:m:s") . "] : " . $message . "\n", FILE_APPEND);
+            file_put_contents($this->_path, "[OK] - [" . Date("H:m:s") . "] : " . $message . "\n", FILE_APPEND);
         }
 
     }
@@ -37,18 +37,14 @@ class Logger{
      * @param null
      * Close this fil represent by the pointer self::$file
      */
-    public static function stop()
+    public function stop()
     {
-        fclose(self::$_file);
+        fclose($this->_file);
     }
 
-    /**
-     * @param null
-     * Create file from the dir self::$path
-     */
-    public static function start()
+    public function getFileXml()
     {
-        self::$_file = fopen(self::$_path, 'w');
+        return file($this->_path);
     }
 
 }

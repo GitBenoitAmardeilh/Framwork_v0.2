@@ -1,0 +1,32 @@
+body{ margin: 0px; }
+.bdMain{ background-color: rgb(7,150,89); }
+.font-size{ font-size: 13px; }
+footer{ position: fixed; bottom: 0; width: 100%; }
+.communParam{  letter-spacing: 1px; }
+.dashNameRow { color:white; }
+.dashCommun { background-color: rgb(190,190,190);  }
+.bcRed{ background-color:rgb(243,35,35); }
+.green{ color:green; }
+.red{ color:rgb(200,11,11); }
+nav ul{  margin:0; padding:0;}
+li{ display:inline-block; list-style-type:none; }
+nav li > a{ display: block; color: white; text-decoration: none; padding: 10px 20px 10px 20px; margin: 0 -3px 0 0; letter-spacing: 1px;}
+
+.li_route:hover > .ulSubMenu{ display: block; }
+.li_logs:hover > .ulLogs{ display: block; }
+.ulSubMenu{ position: absolute; display: none; bottom: 35px; padding-bottom:10px;}
+.ulLogs{ position: absolute; display: none; bottom:50px; left: 0; width: 100%; }
+
+.dicContainer{  }
+table{ border-collapse: collapse; }
+table tr th, table tr td{ padding:7px; }
+table tr td{ background-color:rgb(230,230,230); }
+.GET{ color:blue; }
+.POST{ color:green; }
+
+/**
+Logs
+ */
+
+.dicContainerLog{ border: 1px solid rgb(150,150,150); margin:10px; height:200px; }
+.dicContainerLog p{ margin: 0; padding: 5px;}

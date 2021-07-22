@@ -1,8 +1,8 @@
 <?php
 
-namespace ManagerXml;
+namespace Manager;
 
-class ExceptionManagerXml{
+class XmlManager{
 
     /**
      * @var array
@@ -52,7 +52,7 @@ class ExceptionManagerXml{
             $this->xml->appendChild( $xmlBloc );
         }
 
-        $filePath = __DIR__.'\\Xml\\'.get_class($e).'.xml';
+        $filePath = dirname(__DIR__).'\\Xml\\Files\\'.get_class($e).'.xml';
         $file = fopen($filePath, 'w');
 
         if(file_exists($filePath))

@@ -4,9 +4,6 @@ class WelcomeController extends Controller{
 
     public function index(){
 
-        /**
-         * Commentaire à supprimmer
-         */
         $this->render("Welcome");
 
     }

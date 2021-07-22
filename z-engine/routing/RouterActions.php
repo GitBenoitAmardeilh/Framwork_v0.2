@@ -22,7 +22,7 @@ Abstract class RouterActions{
     public function get( $route , $data )
     {
         $this->setRContainer( $route , $data,"GET");
-        Logger::write("GET Route [ ".$route." ] ", ".\\routes\Web.php");
+        Autoload::$App["Log"]->write("GET Route [ ".$route." ] ", ".\\routes\Web.php");
     }
 
     /**
