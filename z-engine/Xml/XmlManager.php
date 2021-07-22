@@ -81,4 +81,8 @@ class XmlManager{
         return $xmlBloc;
     }
 
+    public function test(){
+        echo "manager";
+    }
+
 }

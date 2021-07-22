@@ -1,4 +1,7 @@
 <?php
+
+use Manager\XmlManager;
+
 class Logger{
 
     /**
@@ -42,7 +45,11 @@ class Logger{
         fclose($this->_file);
     }
 
-    public function getFileXml()
+    /**
+     * @return array|false
+     * Same method in class ExceptionManager
+     */
+    public function createXmlFile()
     {
         return file($this->_path);
     }

@@ -1,7 +1,5 @@
 <?php
 
-//Require(__DIR__."\XmlManager.php");
-
 use Manager\XmlManager;
 
 Abstract class ExceptionManager extends Exception{
