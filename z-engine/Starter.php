@@ -12,15 +12,18 @@ Logger::start();
 $autoload = new Autoload();
 Autoload::$App["Route"]->assignControllerAndAction();
 
-if(sizeOf(Autoload::$App["Errors"]->getErrorInfos()) <> 0){
+if(sizeOf(Autoload::$App["Errors"]->getErrorInfos()) == 0){
 
+    echo "pas erreur";
     Logger::stop();
-    Autoload::$App["Errors"]->view();
+    Autoload::$App["Route"]->redirectToController();
+
 
 } else {
 
+    echo "erreur";
     //Autoload::$App["Errors"]->deleteXmlFile();
-    Autoload::$App["Route"]->redirectToController();
+    Autoload::$App["Errors"]->view();
 
 }
     

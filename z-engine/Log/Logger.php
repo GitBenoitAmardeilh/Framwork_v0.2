@@ -33,11 +33,7 @@ class Logger{
 
     public static function start(){
 
-        if(!file_exists(self::$_path)){
-
-            self::$_file = fopen(self::$_path, 'w');
-
-        }
+        self::$_file = fopen(self::$_path, 'w');
 
     }
 
