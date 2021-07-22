@@ -16,6 +16,7 @@ Abstract class RouterActions{
     public function get( $route , $data ){
 
         $this->testRArray( $route , $data,"GET");
+        Logger::write("GET Route [ ".$route." ] ", ".\\routes\Web.php");
 
     }
 

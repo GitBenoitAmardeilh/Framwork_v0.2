@@ -77,7 +77,7 @@ class Route extends RouterActions{
 
         } catch (Exception $e) {
 
-            Autoload::$App["Errors"]->save($e,$this);
+            Autoload::$App["Errors"]->save($e);
 
         }
 

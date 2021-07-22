@@ -1,10 +1,16 @@
 <?php
 
-Require(__DIR__."\ExceptionManager.php");
+//Require(__DIR__."\ExceptionManager.php");
 
 Abstract class AppExceptions extends ExceptionManager{
 
     private $_errorInfos = array();
+
+    public function __CONSTRUCT(){
+
+        $this->setAttrException();
+
+    }
 
     public function view(){
 
@@ -14,7 +20,8 @@ Abstract class AppExceptions extends ExceptionManager{
 
     public function save( $e ){
 
-        $this->_errorInfos[sizeOf($this->_errorInfos)] = $this->explodeException( $e );
+        $this->createXmlFile( $e );
+        $this->_errorInfos[sizeOf($this->_errorInfos)] = $e;
 
     }
 

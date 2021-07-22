@@ -1,21 +1,16 @@
 <?php
 
-Abstract class ExceptionManagerXml{
+namespace ManagerXml;
+
+class ExceptionManagerXml{
 
     private $nameRow = [];
 
     private $xml;
 
-    public function managerXml( $e ){
-
-        $this->explodeException($e );
-
-    }
-
     public function explodeException( $e ){
 
-        $file = fopen(__DIR__.'\\Xml\\'.get_class($e).'.xml', 'w');
-        $this->xml = new DOMDocument('1.0', 'utf-8');
+        $this->xml = new \DOMDocument('1.0', 'utf-8');
         
         $xmlBloc = $this->xml->createElement( "body");
 
@@ -49,8 +44,12 @@ Abstract class ExceptionManagerXml{
             $this->xml->appendChild( $xmlBloc ); 
 
         }
+        $filePath = __DIR__.'\\Xml\\'.get_class($e).'.xml';
+        $file = fopen($filePath, 'w');
 
-        fputs($file,$this->xml->saveXML());
+        if(file_exists($filePath))
+            fputs($file,$this->xml->saveXML());
+
         fclose($file);
 
     }

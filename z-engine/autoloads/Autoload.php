@@ -22,39 +22,52 @@ class Autoload{
 
         $_autoload_file  = Require("z-engine\autoloads\Autoload_Class.php");
 
-        foreach( $_autoload_file as $key => $value){
+        foreach( $_autoload_file as $key => $path){
 
-            $_arrLink = explode("\\",$value);
+            $_arrLink = explode("\\",$path);
             $_file = substr($_arrLink[sizeOf($_arrLink)- 1], 0 ,-4);
-
-            Require($value);
 
             switch( $_file ){
 
+                case "Errors":
+                    Require(dirname(__DIR__)."\Exceptions\ExceptionManagerXml.php");
+                    Require(dirname(__DIR__)."\Exceptions\ExceptionManager.php");
+                    Require(dirname(__DIR__)."\Exceptions\AppExceptions.php");
+                    Require($path);
+                    self::$App[$_file] = new $_file();
+                    Logger::write("Loading Object ".$_file."() -- ", $path);
+                    break;
+
                 case "Controller":
+                    Require($path);
+                    self::$App[$_file] = new $_file();
+                    Logger::write("Loading Object ".$_file."() -- ", $path);
                     $_httpControllersList = scandir(dirname(dirname(__DIR__))."\\app\http\controllers");
-            
                     foreach($_httpControllersList as $key => $value){
 
                         if($value != "." && $value != "..")
                             require(dirname(dirname(__DIR__))."\\app\http\controllers\\".$value);
-            
+        
                     }
-                    self::$App[$_file] = new $_file();
                     break;
 
                 case "Route":
-                    if(self::$App[$_file] = new $_file()){
+                    Require($path);
+                    self::$App[$_file] = new $_file();
+                    Logger::write("Loading Object ".$_file."() -- ", $path);
+                    if(self::$App[$_file]){
                         require (dirname(dirname(__DIR__))."\\routes\Web.php");
+
                     }
                     break;
-                default:
-                    self::$App[$_file] = new $_file();
-                    break;
 
+                case "Database":
+                    Require($path);
+                    self::$App[$_file] = new $_file();
+                    Logger::write("Loading Object ".$_file."() -- ", $path);
+                    break;
             }
 
-            //self::$App[$_file] = new $_file();
 
         }
 
