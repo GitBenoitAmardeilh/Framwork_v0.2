@@ -34,15 +34,14 @@ class Core{
 
 	}
 
-	public function setLayout($filename){
-
+	public function setLayout($filename)
+    {
 		$this->layout = $filename;
-
 	}
 
-	/*inclu le fichier demandé*/
-	public function render($filename){
-
+	/* inclu le fichier demandé */
+	public function render($filename)
+    {
 		extract($this->vars);
 
 		ob_start();
@@ -59,8 +58,8 @@ class Core{
 	}
 
 	/*inclu le fichier demandé*/
-	public function errorRender($filename){
-
+	public function errorRender($filename)
+    {
 		if(file_exists(dirname(__DIR__).'\\Exceptions\\Xml\\Exception.xml')){
 			$xml = simplexml_load_file(dirname(__DIR__).'\\Exceptions\\Xml\\Exception.xml');
 		} else {
@@ -72,7 +71,6 @@ class Core{
 		$content_for_layout = ob_get_clean();
 		
 		if($this->layout == false){
-
 			echo $content_for_layout;
 		}
 		else{

@@ -11,30 +11,28 @@ Abstract class ExceptionManager extends Exception{
     /**
      * Save all attributs of Exception() in $_AttrList array;
      */
-    public function setAttrException(){
-        
+    public function setAttrException()
+    {
         foreach(new Exception as $attr => $value){
-
             $this->_AttrList[$attr] = $attr;
-
         }
-
     }
 
     /**
      * Return all attributs 
      */
-    public function getAttrList(){
-
+    public function getAttrList()
+    {
         return $this->_AttrList;
-
     }
 
-    public function createXmlFile( $e ){
-
+    /**
+     * @param $e
+     */
+    public function createXmlFile( $e )
+    {
         $managerXml = new ExceptionManagerXml();
         $managerXml->explodeException( $e );
-
     }
 
     

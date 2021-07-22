@@ -8,16 +8,14 @@ class Controller extends Core{
 
 	private $_dataForm = array();
 
-	public function setDataForm( $data ){
-
+	public function setDataForm( $data )
+    {
 		$this->_dataForm = array_merge($this->_dataForm, $data);
-
 	}
 
-	public function getDataForm(){
-
+	public function getDataForm()
+    {
 		return $this->_dataForm;
-
 	}
 
 }

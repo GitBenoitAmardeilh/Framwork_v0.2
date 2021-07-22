@@ -1,6 +1,6 @@
-[OK] - [13:07:28] : Loading Object Errors() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Exceptions\Errors.php
-[OK] - [13:07:28] : Loading Object Controller() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Core\Controllers\Controller.php
-[OK] - [13:07:28] : Loading Object Route() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Routing\Route.php
-[OK] - [13:07:28] : GET Route [ / ] .\routes\Web.php
-[OK] - [13:07:28] : GET Route [ /accueil/test ] .\routes\Web.php
-[OK] - [13:07:28] : Loading Object Database() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Database\Database.php
+[OK] - [14:07:48] : Loading Object Errors() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Exceptions\Errors.php
+[OK] - [14:07:48] : Loading Object Controller() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Core\Controllers\Controller.php
+[OK] - [14:07:48] : Loading Object Route() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Routing\Route.php
+[OK] - [14:07:48] : GET Route [ / ] .\routes\Web.php
+[OK] - [14:07:48] : GET Route [ /accueil/test ] .\routes\Web.php
+[OK] - [14:07:48] : Loading Object Database() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Database\Database.php

@@ -8,18 +8,20 @@ class Autoload{
      */
     public static $App = [];
 
-    public function __CONSTRUCT(){
-
+    /**
+     * Autoload constructor.
+     */
+    public function __CONSTRUCT()
+    {
             $this->addRequireFilesInProject();
-
     }
 
     /**
      * Add all requires in project
-     * @return void 
+     * @return void
      */
-    public function addRequireFilesInProject(){
-
+    public function addRequireFilesInProject()
+    {
         $_autoload_file  = Require("z-engine\autoloads\Autoload_Class.php");
 
         foreach( $_autoload_file as $key => $path){
@@ -67,10 +69,7 @@ class Autoload{
                     Logger::write("Loading Object ".$_file."() -- ", $path);
                     break;
             }
-
-
         }
-
     }
 
 }

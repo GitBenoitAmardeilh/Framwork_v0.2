@@ -4,12 +4,21 @@ namespace ManagerXml;
 
 class ExceptionManagerXml{
 
+    /**
+     * @var array
+     */
     private $nameRow = [];
 
+    /**
+     * @var \DOMDocument
+     */
     private $xml;
 
-    public function explodeException( $e ){
-
+    /**
+     * @param $e
+     */
+    public function explodeException( $e )
+    {
         $this->xml = new \DOMDocument('1.0', 'utf-8');
         
         $xmlBloc = $this->xml->createElement( "body");
@@ -38,12 +47,11 @@ class ExceptionManagerXml{
         $xmlBloc->appendChild($xml_l);
 
         foreach($e->getTrace() as $key => $value){
-
             $xml_a = $this->addTabValuesInXmlFile($value , "arg".$key);
             $xmlBloc->appendChild($xml_a);
-            $this->xml->appendChild( $xmlBloc ); 
-
+            $this->xml->appendChild( $xmlBloc );
         }
+
         $filePath = __DIR__.'\\Xml\\'.get_class($e).'.xml';
         $file = fopen($filePath, 'w');
 
@@ -54,36 +62,23 @@ class ExceptionManagerXml{
 
     }
 
-    public function addTabValuesInXmlFile( $array , $keyName ){
-
+    /**
+     * @param $array
+     * @param $keyName
+     * @return \DOMElement
+     */
+    public function addTabValuesInXmlFile( $array , $keyName )
+    {
         $xmlBloc = $this->xml->createElement( $keyName );
 
         foreach($array as $key => $value){
-            
             if($key != "args"){
-
                 $xml_infos = $this->xml->createElement( $key , $value );
                 $xmlBloc->appendChild($xml_infos);
-
             }
-
         }
 
         return $xmlBloc;
-
-    }
-
-    public function deleteXmlFile(){
-
-        $files1 = scandir(__DIR__.'\\Xml');
-
-        foreach($files1 as $key => $value){
-
-            if($files1[$key] != "." && $files1[$key] != "..")
-                unlink(__DIR__.'\\Xml\\'.$files1[$key]);
-
-        }
-        
     }
 
 }

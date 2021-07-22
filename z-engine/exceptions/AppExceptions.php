@@ -4,30 +4,41 @@
 
 Abstract class AppExceptions extends ExceptionManager{
 
+    /**
+     * @var array
+     */
     private $_errorInfos = array();
 
-    public function __CONSTRUCT(){
-
+    /**
+     * AppExceptions constructor.
+     */
+    public function __CONSTRUCT()
+    {
         $this->setAttrException();
-
     }
 
-    public function view(){
-
+    /**
+     * Return the error view
+     */
+    public function view()
+    {
         Autoload::$App["Controller"]->errorRender("errors");
-
     }
 
-    public function save( $e ){
-
+    /**
+     * @param $e
+     */
+    public function save( $e )
+    {
         $this->createXmlFile( $e );
         $this->_errorInfos[sizeOf($this->_errorInfos)] = $e;
-
     }
 
-    public function getErrorInfos(){
-
+    /**
+     * @return array
+     */
+    public function getErrorInfos()
+    {
         return $this->_errorInfos;
-
     }
 }

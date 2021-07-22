@@ -2,8 +2,14 @@
 
 Abstract class RouterActions{
 
+    /**
+     * @var array
+     */
     private $_RContainer = [];
 
+    /**
+     * @var array
+     */
     private $_PContainer = [];
 
     /**
@@ -13,11 +19,10 @@ Abstract class RouterActions{
      * 
      * $data => [$controller,$method()]
      */
-    public function get( $route , $data ){
-
-        $this->testRArray( $route , $data,"GET");
+    public function get( $route , $data )
+    {
+        $this->setRContainer( $route , $data,"GET");
         Logger::write("GET Route [ ".$route." ] ", ".\\routes\Web.php");
-
     }
 
     /**
@@ -27,62 +32,57 @@ Abstract class RouterActions{
      * 
      * $data => [$controller,$method()]
      */
-    public function post( $route , $data ){
-
-        $this->testRArray( $route , $data , "POST" );
+    public function post( $route , $data )
+    {
+        $this->setRContainer( $route , $data , "POST" );
         $this->explodePOSTArray($_POST);
-
     }
 
     /**
      * @param array $data
      * @return void
      */
-    public function explodePOSTArray( $array ){
-
+    public function explodePOSTArray( $array )
+    {
         foreach( $array as $key => $value ){
-
             if(gettype($array[$key]) == "array"){
-
                 $this->explodePOSTArray($array[$key]);
-
             } else {
-
                 $this->_PContainer[$key] = $value;
-
             }
-
         }
-        
     }
 
-    public function testRArray( $route , $data , $type){
-
+    /**
+     * @param $route
+     * @param $data
+     * @param $type
+     * Initialise $this->_RContainer with params values
+     */
+    public function setRContainer( $route , $data , $type)
+    {
         $this->_RContainer[] = [
                 "Type" => $type,
                 "Route" => $route,
                 "Controller" => $data[0],
                 "Method" => $data[1],
-        ];   
-
+        ];
     }
 
-    public function getRContainer(){
-
+    /**
+     * @return array
+     */
+    public function getRContainer()
+    {
         return  $this->_RContainer;
-
     }
 
-    public function setRContainer( $route , $data ){
-
-        $this->_RContainer[$route] = $data;
-
-    }
-
-    public function getPContainer(){
-
+    /**
+     * @return array
+     */
+    public function getPContainer()
+    {
         return  $this->_PContainer;
-
     }
     
 }

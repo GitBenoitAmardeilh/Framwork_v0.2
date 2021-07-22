@@ -31,9 +31,8 @@ class Route extends RouterActions{
      * 
      * @return void
      */
-    
-    public function redirectToController(){
-
+    public function redirectToController()
+    {
         $controller = $this->_controller;
         $controller = new $controller();
         $controller->setDataForm($this->getPContainer());
@@ -49,17 +48,16 @@ class Route extends RouterActions{
      * 
      * @return void
      */
-    public function assignControllerAndAction(){
-
+    public function assignControllerAndAction()
+    {
         // Save URL in $getList array()
         $this->url = $_GET['p'];
 
         $exist = false;
 
-        try {
-            
+        try
+        {
             foreach($this->getRContainer() as $key => $value){
-
                 if( $this->url == substr($value['Route'],1,strlen($value['Route']))){
 
                     $this->_controller = $value["Controller"];
@@ -67,18 +65,15 @@ class Route extends RouterActions{
 
                     $exist = true;
                     break;
-    
                 }
-
             }
 
             if($exist == false)
                 throw new Exception("ROUTE [404] - Unknown URL");
 
-        } catch (Exception $e) {
-
+        } catch (Exception $e)
+        {
             Autoload::$App["Errors"]->save($e);
-
         }
 
     }
