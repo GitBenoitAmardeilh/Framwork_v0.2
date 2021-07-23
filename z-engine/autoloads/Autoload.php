@@ -32,31 +32,32 @@ class Autoload{
             switch( $_file ){
 
                 case "Errors":
-                    Require(dirname(__DIR__)."\Exceptions\ExceptionManagerXml.php");
+                    //Require(dirname(__DIR__) . "\Xml\XmlManager.php");
                     Require(dirname(__DIR__)."\Exceptions\ExceptionManager.php");
                     Require(dirname(__DIR__)."\Exceptions\AppExceptions.php");
                     Require($path);
                     self::$App[$_file] = new $_file();
-                    Logger::write("Loading Object ".$_file."() -- ", $path);
+                    Autoload::$App["Log"]->write("Loading Object ".$_file."() -- ", $path);
                     break;
 
                 case "Controller":
                     Require($path);
                     self::$App[$_file] = new $_file();
-                    Logger::write("Loading Object ".$_file."() -- ", $path);
+                    Autoload::$App["Log"]->write("Loading Object ".$_file."() -- ", $path);
                     $_httpControllersList = scandir(dirname(dirname(__DIR__))."\\app\http\controllers");
                     foreach($_httpControllersList as $key => $value){
-
-                        if($value != "." && $value != "..")
-                            require(dirname(dirname(__DIR__))."\\app\http\controllers\\".$value);
-        
+                        if($value != "." && $value != "..") {
+                            require(dirname(dirname(__DIR__)) . "\\app\http\controllers\\" . $value);
+                            Autoload::$App["Log"]->write("- - - - Loading App Controllers => " . $value . "() -- ", "\\app\http\controllers\\" . $value);
+                        }
                     }
                     break;
 
                 case "Route":
+                    Require(dirname(__DIR__)."\Routing\RouterActions.php");
                     Require($path);
                     self::$App[$_file] = new $_file();
-                    Logger::write("Loading Object ".$_file."() -- ", $path);
+                    Autoload::$App["Log"]->write("Loading Object ".$_file."() -- ", $path);
                     if(self::$App[$_file]){
                         require (dirname(dirname(__DIR__))."\\routes\Web.php");
 
@@ -66,7 +67,27 @@ class Autoload{
                 case "Database":
                     Require($path);
                     self::$App[$_file] = new $_file();
-                    Logger::write("Loading Object ".$_file."() -- ", $path);
+                    Autoload::$App["Log"]->write("Loading Object ".$_file."() -- ", $path);
+                    break;
+
+                case "Xml":
+                    Require(dirname(__DIR__) . "\Xml\XmlManager.php");
+                    Require($path);
+                    self::$App[$_file] = new $_file();
+                    self::$App["Log"]->write("Loading Object ".$_file."() -- ", $path);
+                    break;
+
+                case "Log":
+                    Require(dirname(__DIR__) . "\Log\Logger.php");
+                    Require($path);
+                    self::$App[$_file] = new $_file();
+                    self::$App["Log"]->write("Loading Object ".$_file."() -- ", $path);
+                    break;
+
+                case "Models":
+                    Require($path);
+                    self::$App[$_file] = new $_file();
+                    self::$App["Log"]->write("Loading Object ".$_file."() -- ", $path);
                     break;
             }
         }

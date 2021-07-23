@@ -1,14 +1,12 @@
 <?php
 
-require("RouterActions.php");
-
 class Route extends RouterActions{
 
     /**
      * @var string
      * Contient l'URL saisie
      */
-    private $url;
+    private $_url;
 
 
     /**
@@ -51,14 +49,14 @@ class Route extends RouterActions{
     public function assignControllerAndAction()
     {
         // Save URL in $getList array()
-        $this->url = $_GET['p'];
+        $this->_url = $_GET['p'];
 
         $exist = false;
 
         try
         {
             foreach($this->getRContainer() as $key => $value){
-                if( $this->url == substr($value['Route'],1,strlen($value['Route']))){
+                if( $this->_url == substr($value['Route'],1,strlen($value['Route']))){
 
                     $this->_controller = $value["Controller"];
                     $this->_action = $value["Method"];

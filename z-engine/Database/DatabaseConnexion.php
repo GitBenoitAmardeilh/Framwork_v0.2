@@ -32,6 +32,7 @@ Abstract class DatabaseConnexion{
 			$this->_isConnect = true;
 		} catch (PDOException $e) {
 			Autoload::$App["Errors"]->save($e);
+			Logger::write("Erreur de connexion à la Database [ ".$_db_infos['DATABASE']." ]", false, true);
 		}
 	}
 

@@ -1,8 +1,6 @@
 <?php
 
-//Require(__DIR__."\ExceptionManagerXml.php");
-
-use ManagerXml\ExceptionManagerXml;
+use Manager\XmlManager;
 
 Abstract class ExceptionManager extends Exception{
 
@@ -31,8 +29,7 @@ Abstract class ExceptionManager extends Exception{
      */
     public function createXmlFile( $e )
     {
-        $managerXml = new ExceptionManagerXml();
-        $managerXml->explodeException( $e );
+        Autoload::$App["Xml"]->explodeException( $e );
     }
 
     

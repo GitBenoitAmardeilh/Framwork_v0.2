@@ -60,10 +60,10 @@ class Core{
 	/*inclu le fichier demandé*/
 	public function errorRender($filename)
     {
-		if(file_exists(dirname(__DIR__).'\\Exceptions\\Xml\\Exception.xml')){
-			$xml = simplexml_load_file(dirname(__DIR__).'\\Exceptions\\Xml\\Exception.xml');
+		if(file_exists(dirname(__DIR__).'\\Xml\\Files\\Exception.xml')){
+			$xml = simplexml_load_file(dirname(__DIR__).'\\Xml\\Files\\Exception.xml');
 		} else {
-			$xml = simplexml_load_file(dirname(__DIR__).'\\Exceptions\\Xml\\PDOException.xml');
+			$xml = simplexml_load_file(dirname(__DIR__).'\\Xml\\Files\\PDOException.xml');
 		}
 
 		ob_start();
