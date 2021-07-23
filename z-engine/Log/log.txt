@@ -1,5 +1,10 @@
-[OK] - [20:07:11] : Loading Object Log() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Log\Log.php
-[OK] - [20:07:11] : Loading Object Xml() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Xml\Xml.php
-[OK] - [20:07:11] : Loading Object Errors() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Exceptions\Errors.php
-[OK] - [20:07:11] : Loading Object Controller() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Core\Controllers\Controller.php
-[OK] - [20:07:11] : - - - - Loading App Controllers => WelcomeController.php() -- \app\http\controllers\WelcomeController.php
+[OK] - [15:07:06] : Loading Object Log() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Log\Log.php
+[OK] - [15:07:06] : Loading Object Xml() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Xml\Xml.php
+[OK] - [15:07:06] : Loading Object Errors() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Exceptions\Errors.php
+[OK] - [15:07:06] : Loading Object Controller() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Core\Controllers\Controller.php
+[OK] - [15:07:06] : - - - - Loading App Controllers => WelcomeController.php() -- \app\http\controllers\WelcomeController.php
+[OK] - [15:07:06] : Loading Object Models() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Core\Models\Models.php
+[OK] - [15:07:06] : Loading Object Route() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Routing\Route.php
+[OK] - [15:07:06] : GET Route [ / ] .\routes\Web.php
+[OK] - [15:07:06] : GET Route [ /accueil/test ] .\routes\Web.php
+[OK] - [15:07:06] : Loading Object Database() -- C:\Users\amard\Projets\Projet_Framwork\Framework v0.2\z-engine\Database\Database.php
