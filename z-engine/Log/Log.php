@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Log;
+
+use App\Log\Logger;
+
 class Log extends Logger{
 
     public function __CONSTRUCT(){

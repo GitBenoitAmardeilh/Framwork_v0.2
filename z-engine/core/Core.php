@@ -1,6 +1,6 @@
 <?php
 
-namespace app\http\Core;
+namespace App\Core;
 
 class Core{
 

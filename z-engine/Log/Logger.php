@@ -1,6 +1,6 @@
 <?php
 
-use Manager\XmlManager;
+namespace App\Log;
 
 class Logger{
 
